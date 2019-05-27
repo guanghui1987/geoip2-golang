@@ -11,7 +11,7 @@ import (
 	"fmt"
 	"net"
 
-	"github.com/oschwald/maxminddb-golang"
+	"github.com/guanghui1987/maxminddb-golang"
 )
 
 // The Enterprise struct corresponds to the data in the GeoIP2 Enterprise

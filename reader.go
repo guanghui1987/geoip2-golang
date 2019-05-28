@@ -336,6 +336,15 @@ func (r *Reader) Country(ipAddress net.IP) (*Country, error) {
 	return &country, err
 }
 
+func (r *Reader) GetField(ipAddress net.IP, language string, path []string, result interface{}) (error) {
+	if isCountry&r.databaseType == 0 {
+		return InvalidMethodError{"Country", r.Metadata().DatabaseType}
+	}
+
+	err := r.mmdbReader.GetField(ipAddress, language, path, &result)
+	return err
+}
+
 // AnonymousIP takes an IP address as a net.IP struct and returns a
 // AnonymousIP struct and/or an error.
 func (r *Reader) AnonymousIP(ipAddress net.IP) (*AnonymousIP, error) {
